@@ -1,0 +1,20 @@
+.choice-button {
+    -fx-background-color: #DB5656;
+    -fx-text-fill: #1C0000;
+    -fx-font-family: "Glass Antiqua";
+    -fx-font-size: 30px;
+    -fx-text-transform: uppercase;
+}
+
+.title {
+    -fx-text-fill: #DB5656;
+    -fx-font-family: "Glass Antiqua";
+    -fx-font-size: 50px;
+}
+
+.prompt {
+    -fx-text-fill: #F5E9E2;
+    -fx-font-family: "Montserrat";
+    -fx-text-transform: uppercase;
+    -fx-font-size: 18px;
+}
