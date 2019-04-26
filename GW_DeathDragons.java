@@ -63,7 +63,20 @@ class GW_DeathDragons {
       setButton1Text(b1Str);
       
       String b2Str = "no";
-      setButton2Text(b2Str); }
+      setButton2Text(b2Str); 
+      
+      System.out.println(labelStr);
+      System.out.println("Click 1 for yes and 0 for no");
+      
+      int action = input.nextInt();
+      
+      if(action == 1) {
+         seer(); } //change name later
+      else {
+         noSeer(); } //change later –> doesn't compile until functs are added
+
+      }
+
       
 
       
