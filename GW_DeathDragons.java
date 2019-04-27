@@ -64,38 +64,46 @@ class GW_DeathDragons {
             noSeer(); }
       }
       
-      if(branch.equals("believe")){
+      else if(branch.equals("believe")){
          if(c == 1){
             believer();
          } else {
             nonBeliever(); }
       }
       
-      if(branch.equals("no seer")){
+      else if(branch.equals("no seer")){
          if(c == 1){
             burnOutside();
          } else {
             burnInside(); }
       }
 
-      if(branch.equals("home or guild")){
+      else if(branch.equals("home or guild")){
          if(c == 1){
             doNothing();
          } else {
             guildMeeting(); }
       }
-     if(branch.equals("guild")){
+     else if(branch.equals("guild")){
          if(c == 1){
             fightAlone();
          } else {
             rallyPeople(); }
       }
-     if(branch.equals("leader")){
+     else if(branch.equals("leader")){
          if(c == 1){
             convinceKing();
          } else {
             beheadKing(); }
       }
+     else if(branch.equals("loner")){
+         if(c == 1){
+            dodge();
+         } else {
+            shoot(); }
+      }
+
+   }
 
    }
 
@@ -231,21 +239,49 @@ class GW_DeathDragons {
 
       }
       
-   public void fightAlone() {
+      public void fightAlone() {
       
       branch = "loner";
       
-      String labelStr = "**Dies in dragon duel**"; //will change
+      String labelStr = "One of the knights tells you about a dragon sighting in a nearby village and gives you the weapons you’ll need to slay it.  You travel there and when you arrive, the dragon has already begun to burn down buildings.  You pull out a bow an arrow and shoot the it in the back.  The arrow looks barely larger than a pin on its massive, scaly back.  It snaps its head around and looks directly at you.";
       setLabel(labelStr);
       
-//      String b1Str = "tbd";
-//      setButton1Text(b1Str);
+      String b1Str = "dodge to the side";
+      setButton1Text(b1Str);
       
-//      String b2Str = "tbd";
-//      setButton2Text(b2Str); 
+      String b2Str = "shoot another arrow";
+      setButton2Text(b2Str); 
       
 
       }
+      
+   public void dodge() {
+      
+      branch = "dodger";
+      
+      String labelStr = "You dodge just in time to avoid a white hot blast of flame.  You look up at the dragon and can already see a glow emanating from its throat.  You see the what’s left of a chimney to your right, but you’re not sure if you’ll make it.  Closer to the left is a charred barn.";
+      setLabel(labelStr);
+      
+      String b1Str = "run left";
+      setButton1Text(b1Str);
+      
+      String b2Str = "run right";
+      setButton2Text(b2Str); 
+      
+
+      } 
+      
+   public void shoot() {
+      
+      branch = "shooter";
+      
+      String labelStr = "As you pull the string back on your bow, you see flames headed directly toward you.  You try to dodge, but it’s too late.  You don’t even have time to take a breath before you’re engulfed in flames.";
+      setLabel(labelStr);
+      
+      setEnd(1); 
+
+      }
+
       
    public void rallyPeople() {
       
