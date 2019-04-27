@@ -251,7 +251,7 @@ class GW_DeathDragons {
       
       branch = "leader";
       
-      String labelStr = "**takes down the government**"; //again, needs some finesse
+      String labelStr = "After talking more to the members of the guild, you decide that this problem is not one that you can fight on your own. You are inspired by the so-called dragon killers, but you also know that you don’t have the years of knowledge that they do. You decide to rally your friends and family; other civilians like yourself. After weeks of travel, you reach the castle, and finally, the king himself, who has historically been a nonbeliever. \n\nDo you try to convince him that the world is in danger, or do you seize your chance to take action and behead him?";
       setLabel(labelStr);
 
       String b1Str = "convince king";
@@ -267,7 +267,7 @@ class GW_DeathDragons {
       
       branch = "not convinced";
       
-      String labelStr = "**is not convinced, world ends**"; //again, needs some finesse
+      String labelStr = "The King remains unconvinced, as he is profiting heavily off of dragon eggs. He throws you out of his castle and exiles you from the kingdom. He does this to anyone who dares to suggest that the dragons are a problem, and soon the world perishes in a fiery death."; //again, needs some finesse
       setLabel(labelStr);
 
       setEnd(1);
@@ -279,7 +279,7 @@ class GW_DeathDragons {
       
       branch = "headless";
       
-      String labelStr = "**Success!**"; //finesse
+      String labelStr = "You heard from the dragon killers that the King was profiting off dragon eggs, so you knew he wouldn’t be swayed by words. Instead, you reach for your sword, and in one swift motion, behead the king. You step up in his action, ban the practice of breeding dragons, and soon the world begins to heal."; //finesse
       setLabel(labelStr);
 
       setEnd(1);
