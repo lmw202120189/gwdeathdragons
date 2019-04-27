@@ -9,7 +9,9 @@
 .title {
     -fx-text-fill: #DB5656;
     -fx-font-family: "Glass Antiqua";
-    -fx-font-size: 95px;
+    -fx-font-size: 85px;
+    -fx-wrap-text: true;
+    -fx-padding: 0 70 0 70;
 }
 
 .prompt {
