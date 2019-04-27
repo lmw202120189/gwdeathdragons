@@ -30,7 +30,7 @@ public class GW_DeathDragonsGUI extends Application
    Label infotext;
    Button choice1;
    Button choice2;
-   GWDeathDragons gwdd;
+   GW_DeathDragons gwdd;
    HBox hboxbutt;
    Label space2;
    Label title;
@@ -76,7 +76,7 @@ public class GW_DeathDragonsGUI extends Application
       
       Scene scene = new Scene(vbox,800,1000); //create scene
       
-      scene.getStylesheets().add("GUIstyle.css");
+      scene.getStylesheets().add("GUI_style.css");
       
       stage.setScene(scene); //set scene
      
@@ -92,7 +92,7 @@ public class GW_DeathDragonsGUI extends Application
       {
       
          vbox.getChildren().removeAll(promptstuff,spacer);
-         gwdd = new GWDeathDragons();
+         gwdd = new GW_DeathDragons();
          gwdd.visitSeerORno();
          
          String templabel = gwdd.getLabel();
