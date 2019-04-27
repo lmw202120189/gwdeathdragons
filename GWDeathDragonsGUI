@@ -30,6 +30,7 @@ public class GWDeathDragonsGUI extends Application
    Label infotext;
    Button choice1;
    Button choice2;
+   GW_DeathDragons gwdd;
 
    public static void main(String[] args)
    {
@@ -101,7 +102,7 @@ public class GWDeathDragonsGUI extends Application
       {
       
          vbox.getChildren().remove(promptstuff);
-         GWDeathDragons gwdd = new GWDeathDragons();
+         gwdd = new GW_DeathDragons();
          gwdd.visitSeerORno();
          
          String templabel = gwdd.getLabel();
@@ -111,10 +112,14 @@ public class GWDeathDragonsGUI extends Application
          String c1 = gwdd.getButton1Text();
          choice1 = new Button(c1);
          choice1.getStyleClass().add("choice-button");
+         choice1.setOnAction(new ChoiceButtonHandler());
+         choice1.setPadding(new Insets(10));
          
          String c2 = gwdd.getButton2Text();
          choice2 = new Button(c2);
          choice2.getStyleClass().add("choice-button");
+         choice2.setOnAction(new ChoiceButtonHandler());
+         choice2.setPadding(new Insets(10));
          
          Label space = new Label("  \n   ");
          space.getStyleClass().add("spacer");
@@ -126,7 +131,32 @@ public class GWDeathDragonsGUI extends Application
          vbox.getChildren().addAll(infotext,space,hboxbutt);
          
       }
-   }   
+   }
+   
+   class ChoiceButtonHandler implements EventHandler<ActionEvent>
+   {
+      @Override
+      public void handle(ActionEvent event)
+      {
+      
+         if(event.getSource().equals(choice1)){
+            gwdd.goChoice(1);
+         } else {
+            gwdd.goChoice(2);
+         }
+         
+         String templabel = gwdd.getLabel();
+         infotext.setText(templabel);
+         
+         String c1 = gwdd.getButton1Text(); 
+         choice1.setText(c1);
+         
+         String c2 = gwdd.getButton2Text();
+         choice2.setText(c2);
+      
+      }
+   }
+   
 
    
 }
