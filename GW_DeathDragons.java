@@ -30,6 +30,10 @@ class GW_DeathDragons {
    public String getLabel() {
    
       return(label); }
+      
+   public int getEnd() {
+   
+      return(end); }
 
    public void setName(String n) {
       
