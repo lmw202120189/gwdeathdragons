@@ -55,18 +55,6 @@ public class GWDeathDragonsGUI extends Application
       prompt1.getStyleClass().add("prompt");
       prompt1.setTextAlignment(TextAlignment.CENTER);
       
-      Label nameprompt = new Label("BEFORE WE BEGIN, WHO ARE YOU?\n ");
-      nameprompt.getStyleClass().add("prompt");
-      
-      Label name = new Label("NAME: ");
-      name.getStyleClass().add("name");
-      
-      TextField actname = new TextField();
-      
-      HBox hbox = new HBox(name, actname);
-      hbox.getStyleClass().add("back");
-      hbox.setAlignment(Pos.CENTER);
-      
       spacer = new Label("    \n\n     ");
       spacer.getStyleClass().add("spacer");
       
@@ -78,7 +66,7 @@ public class GWDeathDragonsGUI extends Application
       startbutt.setOnAction(new StartButtonHandler());
       startbutt.setPadding(new Insets(10));
       
-      promptstuff = new VBox(prompt1,nameprompt, hbox, spacer1, startbutt);
+      promptstuff = new VBox(prompt1, spacer1, startbutt);
       promptstuff.setAlignment(Pos.CENTER);
       
       vbox = new VBox(title, promptstuff, spacer);
@@ -201,3 +189,4 @@ public class GWDeathDragonsGUI extends Application
     }
 
 }
+
