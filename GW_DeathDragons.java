@@ -1,384 +1,198 @@
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.geometry.Pos;
+import javafx.scene.paint.Color; 
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.geometry.Insets;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TextField;
 import java.util.*;
 
-class GW_DeathDragons {
 
-   Scanner input = new Scanner (System.in);
+public class GWDeathDragonsGUI extends Application
+{
 
-   String name = "null";
-   String label = "null";
-   String button1Text = "null";
-   String button2Text = "null";
-   int end = 0;
-   String branch = "null";
+   VBox promptstuff;
+   VBox vbox;
+   Label infotext;
+   Button choice1;
+   Button choice2;
+   GW_DeathDragons gwdd;
+   HBox hboxbutt;
+   Label space2;
+   Label title;
+   Label spacer;
+   Label space;
+   Button finish;
 
-   
-   GW_DeathDragons(){
+   public static void main(String[] args)
+   {
+      // Launch the application.
+      launch(args);
    }
    
-   public String getName(){
+   @Override
+   public void start(Stage stage)
+   {
       
-      return(name); }
+      title = new Label("gw death dragons\n\n");
+      title.getStyleClass().add("title");
       
-   public String getButton1Text() {
-   
-      return(button1Text); }
+      Label prompt1 = new Label("Since the discovery of the magical properties of dragon eggs, their value to society has skyrocketed, but now people are claiming that their homes are being burned up by feral dragons and that if the situation isn't dealt with, it could be disastrous.  The King says its nonsense... He can be trusted, right?\n ".toUpperCase());
+      prompt1.getStyleClass().add("prompt");
+      prompt1.setTextAlignment(TextAlignment.CENTER);
       
-   public String getButton2Text() {
-   
-      return(button2Text); }
+      Label nameprompt = new Label("BEFORE WE BEGIN, WHO ARE YOU?\n ");
+      nameprompt.getStyleClass().add("prompt");
       
-   public String getLabel() {
-   
-      return(label); }
+      Label name = new Label("NAME: ");
+      name.getStyleClass().add("name");
       
-   public int getEnd() {
-   
-      return(end); }
-
-   public void setName(String n) {
+      TextField actname = new TextField();
       
-       name = n; }  
+      HBox hbox = new HBox(name, actname);
+      hbox.getStyleClass().add("back");
+      hbox.setAlignment(Pos.CENTER);
       
-   public void setButton1Text(String b1) {
+      spacer = new Label("    \n\n     ");
+      spacer.getStyleClass().add("spacer");
       
-       button1Text = b1; }
-       
-   public void setButton2Text(String b2) {
+      Label spacer1 = new Label("         ");
+      spacer1.getStyleClass().add("spacer");
       
-      button2Text = b2; }
+      Button startbutt = new Button("start");
+      startbutt.getStyleClass().add("choice-button");
+      startbutt.setOnAction(new StartButtonHandler());
+      startbutt.setPadding(new Insets(10));
       
-   public void setLabel(String l) {
+      promptstuff = new VBox(prompt1,nameprompt, hbox, spacer1, startbutt);
+      promptstuff.setAlignment(Pos.CENTER);
       
-      label = l; } 
+      vbox = new VBox(title, promptstuff, spacer);
+      vbox.getStyleClass().add("back");
+      vbox.setAlignment(Pos.CENTER);
       
-   public void setEnd(int e) {
-      end = e; } 
+      Scene scene = new Scene(vbox,800,1000); //create scene
       
-  
-   public void goChoice(int c) {
+      scene.getStylesheets().add("GUIstyle.css");
       
-      if(branch.equals("start seer")){
-         if(c == 1){
-            seer();
-         } else {
-            noSeer(); }
-      }
+      stage.setScene(scene); //set scene
+     
+      stage.setTitle("Memory Game"); //set title
       
-      else if(branch.equals("believe")){
-         if(c == 1){
-            believer();
-         } else {
-            nonBeliever(); }
-      }
-      
-      else if(branch.equals("no seer")){
-         if(c == 1){
-            burnOutside();
-         } else {
-            burnInside(); }
-      }
-
-      else if(branch.equals("home or guild")){
-         if(c == 1){
-            doNothing();
-         } else {
-            guildMeeting(); }
-      }
-     else if(branch.equals("guild")){
-         if(c == 1){
-            fightAlone();
-         } else {
-            rallyPeople(); }
-      }
-     else if(branch.equals("leader")){
-         if(c == 1){
-            convinceKing();
-         } else {
-            beheadKing(); }
-      }
-     else if(branch.equals("loner")){
-         if(c == 1){
-            dodge();
-         } else {
-            shoot(); }
-      }
-     else if(branch.equals("run right")){
-         if(c == 1){
-            arrow();
-         } else {
-            sword(); }
-      }
-
-
+      stage.show(); //show window
    }
-
-  
-   public void visitSeerORno() {
+   
+   class StartButtonHandler implements EventHandler<ActionEvent>
+   {
+      @Override
+      public void handle(ActionEvent event)
+      {
       
-      branch = "start seer";
-      
-      String labelStr = "You’ve been hearing a lot about these dragon incidents, but you don’t have a lot of information beyond vague rumors.  The Seer always has a lot to say, but not everything she says can be trusted.  Would you like to visit the Seer and find out what she knows?";
-      setLabel(labelStr);
-      
-      String b1Str = "yes";
-      setButton1Text(b1Str);
-      
-      String b2Str = "no";
-      setButton2Text(b2Str); 
-
+         vbox.getChildren().remove(promptstuff);
+         gwdd = new GW_DeathDragons();
+         gwdd.visitSeerORno();
+         
+         String templabel = gwdd.getLabel();
+         infotext = new Label(templabel.toUpperCase());
+         infotext.getStyleClass().add("prompt");
+         infotext.setTextAlignment(TextAlignment.CENTER);
+         
+         String c1 = gwdd.getButton1Text();
+         choice1 = new Button(c1);
+         choice1.getStyleClass().add("choice-button");
+         choice1.setOnAction(new ChoiceButtonHandler());
+         choice1.setPadding(new Insets(10));
+         
+         String c2 = gwdd.getButton2Text();
+         choice2 = new Button(c2);
+         choice2.getStyleClass().add("choice-button");
+         choice2.setOnAction(new ChoiceButtonHandler());
+         choice2.setPadding(new Insets(10));
+         
+         space = new Label("  \n   ");
+         space.getStyleClass().add("spacer");
+         
+         space2 = new Label(" \n\n\n\n  ");
+         space2.getStyleClass().add("spacer");
+         
+         hboxbutt = new HBox(choice1, choice2);
+         hboxbutt.setSpacing(100);
+         hboxbutt.setAlignment(Pos.CENTER);
+         
+         vbox.getChildren().addAll(infotext,space,hboxbutt,space2);
+         
       }
-
-  
-   public void noSeer() {
+   }
+   
+   class ChoiceButtonHandler implements EventHandler<ActionEvent>
+   {
+      @Override
+      public void handle(ActionEvent event)
+      {
       
-      branch = "no seer";
-      
-      String labelStr = "You decide not to pursue the issue and continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the second floor, you could probably make it if you jumped.";
-      setLabel(labelStr);
-      
-      String b1Str = "jump";
-      setButton1Text(b1Str);
-      
-      String b2Str = "stay";
-      setButton2Text(b2Str); 
-
-
-      }
-
-   public void burnOutside() {
-      
-      String labelStr = "You jump out the window and slam into the ground.  Your ankle aches as you stand up.  You look around and notice with horror that everything’s on fire.  Then you see them, dragons, and they’re everywhere.  The rumors were true and now it’s too late change anything.";
-      setLabel(labelStr);
-
-      setEnd(1);
-
-      }   
-      
-   public void burnInside() {
-      
-      String labelStr = "You stay put as the room fills with smoke.  You’ll never know how the fire started, but you do know that your story is about to be cut short.";
-      setLabel(labelStr);
-
-      setEnd(1);
-
-      }    
- 
-    public void nonBeliever() {
-      
-      branch = "no seer";
-      
-      String labelStr = "You decide that the dragon killers are deluded and leave the seer lair to continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the second floor, you could probably make it if you jumped.";
-      setLabel(labelStr);
-      
-      String b1Str = "jump";
-      setButton1Text(b1Str);
-      
-      String b2Str = "stay";
-      setButton2Text(b2Str); 
-      
-      //setEnd(1);
-
-      }
-      
-   public void seer() {
-      
-      branch = "believe";
-      
-      String labelStr = "The seer gives you conflicting information and offers to give you the location of a guild of dragon killers where you might be able to learn more.  She scrawls the location on a bit of parchment, but before she hands it to you she hesitates.  She asks: Do you believe that dragons are the problem?";
-      setLabel(labelStr);
-      
-      String b1Str = "yes";
-      setButton1Text(b1Str);
-      
-      String b2Str = "no";
-      setButton2Text(b2Str); 
+         if(event.getSource().equals(choice1)){
+            gwdd.goChoice(1);
+         } else {
+            gwdd.goChoice(2);
+         }
+         
+         if(gwdd.getEnd() == 1){
+            endSequence();
+         }
+         
+         String templabel = gwdd.getLabel();
+         infotext.setText(templabel.toUpperCase());
+         
+         String c1 = gwdd.getButton1Text(); 
+         choice1.setText(c1);
+         
+         String c2 = gwdd.getButton2Text();
+         choice2.setText(c2);
       
       }
- 
-  
-   public void believer() {
+   }
+   
+   void endSequence(){
       
-      branch = "home or guild";
-      
-      String labelStr = "You take the parchment, but as you walk away you’re not sure if you will actually visit the guild.  You believe that dragons are burning houses, but you’ve never seen any in your town and the guild is so far away.  Can you really be expected to drop everything in your life to go fight dragons? ";
-      setLabel(labelStr);
-      
-      String b1Str = "go home";
-      setButton1Text(b1Str);
-      
-      String b2Str = "go to guild";
-      setButton2Text(b2Str); 
-      
+         String templabel = gwdd.getLabel();
+         infotext.setText(templabel.toUpperCase());
+         
+         vbox.getChildren().removeAll(hboxbutt,space2);
+         
+         finish = new Button("finish");
+         finish.getStyleClass().add("choice-button");
+         finish.setOnAction(new FinishButtonHandler());
+         finish.setPadding(new Insets(10));
 
+         vbox.getChildren().addAll(finish,space2);
+         
+    }
+    
+   class FinishButtonHandler implements EventHandler<ActionEvent>
+   {
+      @Override
+      public void handle(ActionEvent event)
+      {
+      
+         vbox.getChildren().remove(finish);
+         title.setText("surprise!");
+         infotext.setText("the dragons were a metaphor for climate change all along".toUpperCase());
+         
       }
-      
-   public void doNothing() {
-      
-      branch = "no seer";
-      
-      String labelStr = "You go home and continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the first floor, you could probably make it if you jumped.";
-      setLabel(labelStr);
-      
-      String b1Str = "jump";
-      setButton1Text(b1Str);
-      
-      String b2Str = "stay";
-      setButton2Text(b2Str); 
-      
+    }
 
-      }
-      
-   public void guildMeeting() {
-      
-      branch = "guild";
-      
-      String labelStr = "On the parchment is a simple note:  The Lone Tavern, Beor, nightfall.  When you arrive at the tavern you see a assortment of odd characters–knights in shiny and not so shiny armour and scientists huddled together, arguing amongst themselves, presumably about some complicated theory or another.  The meeting was long, but the message was clear: dragons are wreaking havoc on the world and must be stopped.";
-      setLabel(labelStr);
-      
-      String b1Str = "fight alone";
-      setButton1Text(b1Str);
-      
-      String b2Str = "rally people";
-      setButton2Text(b2Str); 
-      
-
-      }
-      
-   public void fightAlone() {
-      
-      branch = "loner";
-      
-      String labelStr = "One of the knights tells you about a dragon sighting in a nearby village and gives you the weapons you’ll need to slay it.  You travel there and when you arrive, the dragon has already begun to burn down buildings.  You pull out a bow an arrow and shoot the it in the back.  The arrow looks barely larger than a pin on its massive, scaly back.  It snaps its head around and looks directly at you.";
-      setLabel(labelStr);
-      
-      String b1Str = "dodge to the side";
-      setButton1Text(b1Str);
-      
-      String b2Str = "shoot another arrow";
-      setButton2Text(b2Str); 
-      
-
-      }
-      
-   public void dodge() {
-      
-      branch = "dodger";
-      
-      String labelStr = "You dodge just in time to avoid a white hot blast of flame.  You look up at the dragon and can already see a glow emanating from its throat.  You see the what’s left of a chimney to your right, but you’re not sure if you’ll make it.  Closer to the left is a charred barn.";
-      setLabel(labelStr);
-      
-      String b1Str = "run left";
-      setButton1Text(b1Str);
-      
-      String b2Str = "run right";
-      setButton2Text(b2Str); 
-      
-
-      } 
-      
-   public void rLeft() {
-      
-      branch = "run left";
-      
-      String labelStr = "You run as fast as you can and duck behind the barn.  As you do, a blast of flame hits the barn and the wall that’s protecting you burns to ash, leaving you exposed to the fire.  You died.";
-      setLabel(labelStr);
-      
-      setEnd(1);     
-
-      }
-      
-   public void rRight() {
-      
-      branch = "run right";
-      
-      String labelStr = "You run as fast as you can and duck behind the chimney.  As you do, a blast of flame hits it and the bricks heat up rapidly.  The dragon is quickly getting closer. You’re down to one arrow. Do you want to use your bow and last arrow or sacrifice the safety of range and use your sword?  ";
-      setLabel(labelStr);
-      
-      String b1Str = "use your bow";
-      setButton1Text(b1Str);
-      
-      String b2Str = "use your sword";
-      setButton2Text(b2Str); 
-
-      }
- 
-    public void arrow() { //still needs text
-      
-      branch = "arrow";
-      
-      String labelStr = ""; 
-      setLabel(labelStr);
-      
-      String b1Str = "";
-      setButton1Text(b1Str);
-      
-      String b2Str = "";
-      setButton2Text(b2Str); 
-
-      }
-
-      
-   public void sword() {
-      
-      branch = "sword";
-      
-      String labelStr = "You charge the dragon, broadsword in hand. You manage to dodge its fiery breath and raise the sword above your head and plunge it through the dragon’s heart. Unfortunately the dragon knocked you away with its clawed talons. You have gashes everywhere, and bleed out dying slowly. ";
-      setLabel(labelStr);
-      
-      setEnd(1);     
-
-      }
-      
-   public void shoot() {
-      
-      branch = "shooter";
-      
-      String labelStr = "As you pull the string back on your bow, you see flames headed directly toward you.  You try to dodge, but it’s too late.  You don’t even have time to take a breath before you’re engulfed in flames.";
-      setLabel(labelStr);
-      
-      setEnd(1); 
-
-      }
-           
-   public void rallyPeople() {
-      
-      branch = "leader";
-      
-      String labelStr = "After talking more to the members of the guild, you decide that this problem is not one that you can fight on your own. You are inspired by the so-called dragon killers, but you also know that you don’t have the years of knowledge that they do. You decide to rally your friends and family; other civilians like yourself. After weeks of travel, you reach the castle, and finally, the king himself, who has historically been a nonbeliever. \n\nDo you try to convince him that the world is in danger, or do you seize your chance to take action and behead him?";
-      setLabel(labelStr);
-
-      String b1Str = "convince king";
-      setButton1Text(b1Str);
-      
-      String b2Str = "behead king";
-      setButton2Text(b2Str); 
-      
-
-      }
-      
-   public void convinceKing() {
-      
-      branch = "not convinced";
-      
-      String labelStr = "The King remains unconvinced, as he is profiting heavily off of dragon eggs. He throws you out of his castle and exiles you from the kingdom. He does this to anyone who dares to suggest that the dragons are a problem, and soon the world perishes in a fiery death."; //again, needs some finesse
-      setLabel(labelStr);
-
-      setEnd(1);
-           
-
-      }
-
-   public void beheadKing() {
-      
-      branch = "headless";
-      
-      String labelStr = "You heard from the dragon killers that the King was profiting off dragon eggs, so you knew he wouldn’t be swayed by words. Instead, you reach for your sword, and in one swift motion, behead the king. You step up in his action, ban the practice of breeding dragons, and soon the world begins to heal."; //finesse
-      setLabel(labelStr);
-
-      setEnd(1);
-      
-
-      }
-
-      
-      }
+}
