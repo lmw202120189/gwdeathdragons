@@ -8,6 +8,7 @@ class GW_DeathDragons {
    String label = "null";
    String button1Text = "null";
    String button2Text = "null";
+   int end = 0;
 
    
    GW_DeathDragons(){
@@ -16,9 +17,9 @@ class GW_DeathDragons {
    
    public void setUp(){
    
-      System.out.println("What would you like to be called?");
-      name = input.next();
-      System.out.println("exposition exposition exposition exposition");
+      //System.out.println("What would you like to be called?");
+      //name = input.next();
+      System.out.println("");
    }
    
    public String getName(){
@@ -56,7 +57,7 @@ class GW_DeathDragons {
    
    public void visitSeerORno() {
       
-      String labelStr = "description+would you like to visit the seer or whatevs";
+      String labelStr = "visit seer?";
       setLabel(labelStr);
       
       String b1Str = "yes";
@@ -71,14 +72,68 @@ class GW_DeathDragons {
       int action = input.nextInt();
       
       if(action == 1) {
-         seer(); } //change name later
+         seer(); } 
       else {
-         noSeer(); } //change later –> doesn't compile until functs are added
+         end = 1;
+         noSeer(); } 
 
       }
 
+   public void noSeer() {
       
+      String labelStr = "Fuck you";
+      setLabel(labelStr);
+      
+      System.out.println(labelStr);
 
+      }
+    
+      
+   public void seer() {
+      
+      String labelStr = "seer info: do you believe?";
+      setLabel(labelStr);
+      
+      String b1Str = "yes";
+      setButton1Text(b1Str);
+      
+      String b2Str = "no";
+      setButton2Text(b2Str); 
+      
+      System.out.println(labelStr);
+      System.out.println("Click 1 for yes and 0 for no");
+      
+      int action = input.nextInt();
+      
+      if(action == 1) {
+         end = 1; //delete later
+         believer(); } 
+      else {
+         end = 1;
+         noSeer(); } 
+      }
+ 
+   public void believer() {
+      
+      String labelStr = "You fought the dragons and saved the World!";
+      setLabel(labelStr);
+      
+ //     String b1Str = "yes";
+ //     setButton1Text(b1Str);
+      
+ //     String b2Str = "no";
+ //     setButton2Text(b2Str); 
+      
+ //     System.out.println(labelStr);
+ //     System.out.println("Click 1 for yes and 0 for no");
+      
+ //     int action = input.nextInt();
+      
+ //     if(action == 1) {
+ //        believer(); } //change name later
+ //     else {
+ //        nonBeliever(); } //change later –> doesn't compile until functs are added
+
+      }
       
       }
-
