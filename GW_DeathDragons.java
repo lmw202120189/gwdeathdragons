@@ -102,8 +102,13 @@ class GW_DeathDragons {
          } else {
             shoot(); }
       }
+     else if(branch.equals("run right")){
+         if(c == 1){
+            arrow();
+         } else {
+            sword(); }
+      }
 
-   }
 
    }
 
@@ -239,7 +244,7 @@ class GW_DeathDragons {
 
       }
       
-      public void fightAlone() {
+   public void fightAlone() {
       
       branch = "loner";
       
@@ -271,6 +276,59 @@ class GW_DeathDragons {
 
       } 
       
+   public void rLeft() {
+      
+      branch = "run left";
+      
+      String labelStr = "You run as fast as you can and duck behind the barn.  As you do, a blast of flame hits the barn and the wall that’s protecting you burns to ash, leaving you exposed to the fire.  You died.";
+      setLabel(labelStr);
+      
+      setEnd(1);     
+
+      }
+      
+   public void rRight() {
+      
+      branch = "run right";
+      
+      String labelStr = "You run as fast as you can and duck behind the chimney.  As you do, a blast of flame hits it and the bricks heat up rapidly.  The dragon is quickly getting closer. You’re down to one arrow. Do you want to use your bow and last arrow or sacrifice the safety of range and use your sword?  ";
+      setLabel(labelStr);
+      
+      String b1Str = "use your bow";
+      setButton1Text(b1Str);
+      
+      String b2Str = "use your sword";
+      setButton2Text(b2Str); 
+
+      }
+ 
+    public void arrow() { //still needs text
+      
+      branch = "arrow";
+      
+      String labelStr = ""; 
+      setLabel(labelStr);
+      
+      String b1Str = "";
+      setButton1Text(b1Str);
+      
+      String b2Str = "";
+      setButton2Text(b2Str); 
+
+      }
+
+      
+   public void sword() {
+      
+      branch = "sword";
+      
+      String labelStr = "";
+      setLabel(labelStr);
+      
+      setEnd(1);     
+
+      }
+      
    public void shoot() {
       
       branch = "shooter";
@@ -281,8 +339,7 @@ class GW_DeathDragons {
       setEnd(1); 
 
       }
-
-      
+           
    public void rallyPeople() {
       
       branch = "leader";
@@ -325,4 +382,3 @@ class GW_DeathDragons {
 
       
       }
-      
