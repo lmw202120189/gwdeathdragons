@@ -1,0 +1,132 @@
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.geometry.Pos;
+import javafx.scene.paint.Color; 
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.geometry.Insets;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TextField;
+import java.util.*;
+
+
+public class GWDeathDragonsGUI extends Application
+{
+
+   VBox promptstuff;
+   VBox vbox;
+   Label infotext;
+   Button choice1;
+   Button choice2;
+
+   public static void main(String[] args)
+   {
+      // Launch the application.
+      launch(args);
+   }
+   
+   @Override
+   public void start(Stage stage)
+   {
+      
+      Label title = new Label("gw death dragons\n\n");
+      title.getStyleClass().add("title");
+      
+      Label prompt1 = new Label("WELCOME TO THIS WORLD. DRAGONS MAY OR MAY NOT");
+      prompt1.getStyleClass().add("prompt");
+      
+      Label prompt2 = new Label("BE REAL AND DESTROYING EVERYTHING.");
+      prompt2.getStyleClass().add("prompt");
+      
+      Label prompt3 = new Label("WHAT WILL YOU BELIEVE?\n\n");
+      prompt3.getStyleClass().add("prompt");
+
+      Label nameprompt = new Label("FIRST, WHO ARE YOU?\n\n");
+      nameprompt.getStyleClass().add("prompt");
+      
+      Label name = new Label("NAME: ");
+      name.getStyleClass().add("prompt");
+      
+      TextField actname = new TextField();
+      
+      HBox hbox = new HBox(name, actname);
+      hbox.getStyleClass().add("back");
+      hbox.setAlignment(Pos.CENTER);
+      
+      Label spacer = new Label("    \n\n     ");
+      spacer.getStyleClass().add("spacer");
+      
+      Label spacer1 = new Label("         ");
+      spacer1.getStyleClass().add("spacer");
+      
+      Button startbutt = new Button("start");
+      startbutt.getStyleClass().add("choice-button");
+      startbutt.setOnAction(new StartButtonHandler());
+      startbutt.setPadding(new Insets(10));
+      
+      promptstuff = new VBox(prompt1, prompt2, prompt3, nameprompt, hbox, spacer1, startbutt);
+      promptstuff.setAlignment(Pos.CENTER);
+      
+      vbox = new VBox(title, promptstuff, spacer);
+      vbox.getStyleClass().add("back");
+      vbox.setAlignment(Pos.CENTER);
+      
+      Scene scene = new Scene(vbox,800,1000); //create scene
+      
+      scene.getStylesheets().add("GUIstyle.css");
+      
+      stage.setScene(scene); //set scene
+     
+      stage.setTitle("Memory Game"); //set title
+      
+      stage.show(); //show window
+   }
+   
+   class StartButtonHandler implements EventHandler<ActionEvent>
+   {
+      @Override
+      public void handle(ActionEvent event)
+      {
+      
+         vbox.getChildren().remove(promptstuff);
+         GWDeathDragons gwdd = new GWDeathDragons();
+         gwdd.visitSeerORno();
+         
+         String templabel = gwdd.getLabel();
+         infotext = new Label(templabel);
+         infotext.getStyleClass().add("prompt");
+         
+         String c1 = gwdd.getButton1Text();
+         choice1 = new Button(c1);
+         choice1.getStyleClass().add("choice-button");
+         
+         String c2 = gwdd.getButton2Text();
+         choice2 = new Button(c2);
+         choice2.getStyleClass().add("choice-button");
+         
+         Label space = new Label("  \n   ");
+         space.getStyleClass().add("spacer");
+         
+         HBox hboxbutt = new HBox(choice1, choice2);
+         hboxbutt.setSpacing(100);
+         hboxbutt.setAlignment(Pos.CENTER);
+         
+         vbox.getChildren().addAll(infotext,space,hboxbutt);
+         
+      }
+   }   
+
+   
+}
