@@ -30,7 +30,7 @@ public class GW_DeathDragonsGUI extends Application
    Label infotext;
    Button choice1;
    Button choice2;
-   GW_DeathDragons gwdd;
+   GWDeathDragons gwdd;
    HBox hboxbutt;
    Label space2;
    Label title;
@@ -48,8 +48,9 @@ public class GW_DeathDragonsGUI extends Application
    public void start(Stage stage)
    {
       
-      title = new Label("gw death dragons\n\n");
+      title = new Label("death, destruction, and ... dragons?\n\n");
       title.getStyleClass().add("title");
+      title.setTextAlignment(TextAlignment.CENTER);
       
       Label prompt1 = new Label("Since the discovery of the magical properties of dragon eggs, their value to society has skyrocketed, but now people are claiming that their homes are being burned up by feral dragons and that if the situation isn't dealt with, it could be disastrous.  The King says its nonsense... He can be trusted, right?\n ".toUpperCase());
       prompt1.getStyleClass().add("prompt");
@@ -91,7 +92,7 @@ public class GW_DeathDragonsGUI extends Application
       {
       
          vbox.getChildren().removeAll(promptstuff,spacer);
-         gwdd = new GW_DeathDragons();
+         gwdd = new GWDeathDragons();
          gwdd.visitSeerORno();
          
          String templabel = gwdd.getLabel();
@@ -189,4 +190,3 @@ public class GW_DeathDragonsGUI extends Application
     }
 
 }
-
