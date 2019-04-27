@@ -374,7 +374,7 @@ class GW_DeathDragons {
       
       branch = "headless";
       
-      String labelStr = "You heard from the dragon killers that the King was profiting off dragon eggs, so you knew he wouldn’t be swayed by words. Instead, you reach for your sword, and in one swift motion, behead the king. You step up in his action, ban the practice of breeding dragons, and soon the world begins to heal."; //finesse
+      String labelStr = "You heard from the dragon killers that the King was profiting off dragon eggs, so you knew he wouldn’t be swayed by words. Instead, you reach for your sword, and in one swift motion, behead the king. You step up in his absence, ban the practice of breeding dragons, and soon the world begins to heal."; //finesse
       setLabel(labelStr);
 
       setEnd(1);
