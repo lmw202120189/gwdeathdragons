@@ -80,13 +80,18 @@ class GW_DeathDragons {
          } else {
             guildMeeting(); }
       }
-//     if(branch.equals("guild")){
-//         if(c == 1){
-//            fightAlone();
-//         } else {
-//            rallyPeople(); }
-//      }
-
+     if(branch.equals("guild")){
+         if(c == 1){
+            fightAlone();
+         } else {
+            rallyPeople(); }
+      }
+     if(branch.equals("leader")){
+         if(c == 1){
+            convinceKing();
+         } else {
+            beheadKing(); }
+      }
 
    }
 
@@ -221,6 +226,63 @@ class GW_DeathDragons {
       
 
       }
+      
+   public void fightAlone() {
+      
+      branch = "loner";
+      
+      String labelStr = "**Dies in dragon duel**"; //will change
+      setLabel(labelStr);
+      
+//      String b1Str = "tbd";
+//      setButton1Text(b1Str);
+      
+//      String b2Str = "tbd";
+//      setButton2Text(b2Str); 
+      
+
+      }
+      
+   public void rallyPeople() {
+      
+      branch = "leader";
+      
+      String labelStr = "**takes down the government**"; //again, needs some finesse
+      setLabel(labelStr);
+
+      String b1Str = "convince king";
+      setButton1Text(b1Str);
+      
+      String b2Str = "behead king";
+      setButton2Text(b2Str); 
+      
+
+      }
+      
+   public void convinceKing() {
+      
+      branch = "not convinced";
+      
+      String labelStr = "**is not convinced, world ends**"; //again, needs some finesse
+      setLabel(labelStr);
+
+      setEnd(1);
+           
+
+      }
+
+   public void beheadKing() {
+      
+      branch = "headless";
+      
+      String labelStr = "**Success!**"; //finesse
+      setLabel(labelStr);
+
+      setEnd(1);
+      
+
+      }
 
       
       }
+      
