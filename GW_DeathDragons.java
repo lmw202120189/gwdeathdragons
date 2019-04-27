@@ -74,12 +74,19 @@ class GW_DeathDragons {
             burnInside(); }
       }
 
-//      if(branch.equals("home or guild")){
+      if(branch.equals("home or guild")){
+         if(c == 1){
+            doNothing();
+         } else {
+            guildMeeting(); }
+      }
+//     if(branch.equals("guild")){
 //         if(c == 1){
-//            doNothing();
+//            fightAlone();
 //         } else {
-//            GuildMeeting(); }
+//            rallyPeople(); }
 //      }
+
 
    }
 
@@ -102,7 +109,7 @@ class GW_DeathDragons {
   
    public void noSeer() {
       
-      branch = "no seer"
+      branch = "no seer";
       
       String labelStr = "You decide not to pursue the issue and continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the second floor, you could probably make it if you jumped.";
       setLabel(labelStr);
@@ -112,8 +119,7 @@ class GW_DeathDragons {
       
       String b2Str = "stay";
       setButton2Text(b2Str); 
-      
-      //setEnd(1);
+
 
       }
 
@@ -137,7 +143,7 @@ class GW_DeathDragons {
  
     public void nonBeliever() {
       
-      branch = "no seer"
+      branch = "no seer";
       
       String labelStr = "You decide that the dragon killers are deluded and leave the seer lair to continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the second floor, you could probably make it if you jumped.";
       setLabel(labelStr);
@@ -170,7 +176,7 @@ class GW_DeathDragons {
   
    public void believer() {
       
-      branch = "home or guild"
+      branch = "home or guild";
       
       String labelStr = "You take the parchment, but as you walk away you’re not sure if you will actually visit the guild.  You believe that dragons are burning houses, but you’ve never seen any in your town and the guild is so far away.  Can you really be expected to drop everything in your life to go fight dragons? ";
       setLabel(labelStr);
@@ -183,5 +189,38 @@ class GW_DeathDragons {
       
 
       }
+      
+   public void doNothing() {
+      
+      branch = "no seer";
+      
+      String labelStr = "You go home and continue to live your life as normal.  One day you wake up to the smell of smoke.  Your house is on fire!  You go to open your bedroom door, but it’s hot.  You look at your window–you live on the first floor, you could probably make it if you jumped.";
+      setLabel(labelStr);
+      
+      String b1Str = "jump";
+      setButton1Text(b1Str);
+      
+      String b2Str = "stay";
+      setButton2Text(b2Str); 
+      
+
+      }
+      
+   public void guildMeeting() {
+      
+      branch = "guild";
+      
+      String labelStr = "On the parchment is a simple note:  The Lone Tavern, Beor, nightfall.  When you arrive at the tavern you see a assortment of odd characters–knights in shiny and not so shiny armour and scientists huddled together, arguing amongst themselves, presumably about some complicated theory or another.  The meeting was long, but the message was clear: dragons are wreaking havoc on the world and must be stopped.";
+      setLabel(labelStr);
+      
+      String b1Str = "fight alone";
+      setButton1Text(b1Str);
+      
+      String b2Str = "rally people";
+      setButton2Text(b2Str); 
+      
+
+      }
+
       
       }
