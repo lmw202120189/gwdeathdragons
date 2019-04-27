@@ -9,17 +9,10 @@ class GW_DeathDragons {
    String button1Text = "null";
    String button2Text = "null";
    int end = 0;
+   String branch = "null";
 
    
    GW_DeathDragons(){
-      setUp();
-   }
-   
-   public void setUp(){
-   
-      //System.out.println("What would you like to be called?");
-      //name = input.next();
-      System.out.println("");
    }
    
    public String getName(){
@@ -52,10 +45,33 @@ class GW_DeathDragons {
       
    public void setLabel(String l) {
       
-      label = l; }  
+      label = l; } 
+      
+   public void setEnd(int e) {
+      end = e; } 
+      
+  
+   public void goChoice(int c) {
+      
+      if(branch.equals("start seer")){
+         if(c == 1){
+            seer();
+         } else {
+            noSeer(); }
+      }
+      
+      if(branch.equals("believe")){
+         if(c == 1){
+            believer();
+         } else {
+            noSeer(); }
+      }
+   }
 
-   
+  
    public void visitSeerORno() {
+      
+      branch = "start seer";
       
       String labelStr = "visit seer?";
       setLabel(labelStr);
@@ -65,31 +81,23 @@ class GW_DeathDragons {
       
       String b2Str = "no";
       setButton2Text(b2Str); 
-      
-      System.out.println(labelStr);
-      System.out.println("Click 1 for yes and 0 for no");
-      
-      int action = input.nextInt();
-      
-      if(action == 1) {
-         seer(); } 
-      else {
-         end = 1;
-         noSeer(); } 
 
       }
 
+  
    public void noSeer() {
       
       String labelStr = "Fuck you";
       setLabel(labelStr);
       
-      System.out.println(labelStr);
+      setEnd(1);
 
       }
     
       
    public void seer() {
+      
+      branch = "believe";
       
       String labelStr = "seer info: do you believe?";
       setLabel(labelStr);
@@ -100,19 +108,9 @@ class GW_DeathDragons {
       String b2Str = "no";
       setButton2Text(b2Str); 
       
-      System.out.println(labelStr);
-      System.out.println("Click 1 for yes and 0 for no");
-      
-      int action = input.nextInt();
-      
-      if(action == 1) {
-         end = 1; //delete later
-         believer(); } 
-      else {
-         end = 1;
-         noSeer(); } 
       }
  
+  
    public void believer() {
       
       String labelStr = "You fought the dragons and saved the World!";
