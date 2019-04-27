@@ -30,7 +30,7 @@ public class GWDeathDragonsGUI extends Application
    Label infotext;
    Button choice1;
    Button choice2;
-   GW_DeathDragons gwdd;
+   GWDeathDragons gwdd;
    HBox hboxbutt;
    Label space2;
    Label title;
@@ -102,8 +102,8 @@ public class GWDeathDragonsGUI extends Application
       public void handle(ActionEvent event)
       {
       
-         vbox.getChildren().remove(promptstuff);
-         gwdd = new GW_DeathDragons();
+         vbox.getChildren().removeAll(promptstuff,spacer);
+         gwdd = new GWDeathDragons();
          gwdd.visitSeerORno();
          
          String templabel = gwdd.getLabel();
@@ -189,9 +189,14 @@ public class GWDeathDragonsGUI extends Application
       {
       
          vbox.getChildren().remove(finish);
-         title.setText("surprise!");
-         infotext.setText("the dragons were a metaphor for climate change all along".toUpperCase());
+         title.setText("surprise!\n\n");
+         infotext.setText("the dragons were a metaphor for climate change all along\n\n".toUpperCase());
          
+         Label action = new Label("So what can you do to help stop dragons?\n\nMaking individual changes are great, but we also need widespread change: \n\nRally! in your community to create changes where you are. \n\nVote! for candidates that have climate change as a priority. \n\nHope! for a future where our home is protected.".toUpperCase());
+         action.getStyleClass().add("prompt");
+         action.setTextAlignment(TextAlignment.CENTER);
+         vbox.getChildren().removeAll(space,space2);
+         vbox.getChildren().addAll(action,space);
       }
     }
 
