@@ -308,18 +308,14 @@ class GW_DeathDragons {
 
       }
  
-    public void arrow() { //still needs text
+      public void arrow() { 
       
       branch = "arrow";
       
-      String labelStr = ""; 
+      String labelStr = "You slayed this dragon! Unfortunately, there are still thousands of more dragons. You cannot complete this quest alone."; 
       setLabel(labelStr);
       
-      String b1Str = "";
-      setButton1Text(b1Str);
-      
-      String b2Str = "";
-      setButton2Text(b2Str); 
+      setEnd(1); 
 
       }
 
