@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import java.util.*;
 
 
-public class GWDeathDragonsGUI extends Application
+public class GW_DeathDragonsGUI extends Application
 {
 
    VBox promptstuff;
