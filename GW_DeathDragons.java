@@ -322,7 +322,7 @@ class GW_DeathDragons {
       
       branch = "sword";
       
-      String labelStr = "";
+      String labelStr = "You charge the dragon, broadsword in hand. You manage to dodge its fiery breath and raise the sword above your head and plunge it through the dragon’s heart. Unfortunately the dragon knocked you away with its clawed talons. You have gashes everywhere, and bleed out dying slowly. ";
       setLabel(labelStr);
       
       setEnd(1);     
